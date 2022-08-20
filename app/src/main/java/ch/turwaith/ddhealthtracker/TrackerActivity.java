@@ -18,7 +18,6 @@ public class TrackerActivity extends AppCompatActivity {
 
     int initialHP;
 
-    int combinedHp;
     int normalHp;
     int tempHp;
 
@@ -81,6 +80,7 @@ public class TrackerActivity extends AppCompatActivity {
         setHpInView();
     }
     public void subtractOneFromTempHp(View view){
+        if (tempHp == 0) return;
         tempHp -= 1;
         setHpInView();
     }
