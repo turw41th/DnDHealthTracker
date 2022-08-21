@@ -103,8 +103,6 @@
         android:id="@+id/textView_hp_counter"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="173dp"
-        android:layout_marginEnd="180dp"
         android:text="0 HP"
         android:textSize="60dp"
         app:layout_constraintBottom_toTopOf="@+id/button_hp_plus_5"
@@ -133,5 +131,15 @@
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView_combined_hp"
+        android:layout_width="wrap_content"
+        android:layout_height="19dp"
+        android:layout_marginTop="10dp"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView_hp_counter" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
