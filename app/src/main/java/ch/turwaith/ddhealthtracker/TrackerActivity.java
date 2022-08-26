@@ -15,6 +15,7 @@ public class TrackerActivity extends AppCompatActivity {
     TextView characterNameTextView;
     TextView hpTextView;
     TextView maxHpTextView;
+    TextView combinedHpTextView;
 
     int initialHP;
 
@@ -25,6 +26,9 @@ public class TrackerActivity extends AppCompatActivity {
     public String getNormalHP() {
         return Integer.toString(normalHp);
     }
+    public String getTempHp(){
+        return Integer.toString(tempHp);
+    }
 
     public String getCombinedHp(){
         return Integer.toString(normalHp + tempHp);
@@ -34,8 +38,12 @@ public class TrackerActivity extends AppCompatActivity {
         String hpText;
         if (tempHp > 0){
             hpText = getCombinedHp() + " HP";
+            combinedHpTextView.setVisibility(View.VISIBLE);
+            combinedHpTextView.setText("(" + getNormalHP() + " regular HP + " + getTempHp() + " temporary HP)");
         } else {
-            hpText = getNormalHP() + " HP";
+            combinedHpTextView.setVisibility(View.INVISIBLE);
+            hpText = getCombinedHp() + " HP";
+            tempHp = 0;
         }
 
         hpTextView.setText(hpText);
@@ -68,11 +76,22 @@ public class TrackerActivity extends AppCompatActivity {
         setHpInView();
     }
     public void subtractOneFromHP(View view){
-        normalHp -= 1;
+        if (tempHp > 0){
+            tempHp -= 1;
+        } else {
+            normalHp -= 1;
+        }
         setHpInView();
     }
     public void subtractFiveFromHP(View view){
-        normalHp -= 5;
+
+        for (int i = 5; i > 0 ; i--) {
+            if (tempHp > 0){
+                tempHp -= 1;
+            } else {
+                normalHp -= 1;
+            }
+        }
         setHpInView();
     }
     public void addOneToTempHp(View view){
@@ -94,6 +113,8 @@ public class TrackerActivity extends AppCompatActivity {
 
         normalHp = 0;
         tempHp = 0;
+
+        combinedHpTextView = findViewById(R.id.textView_combined_hp);
 
         maxHpTextView = findViewById(R.id.textView_MaxHp);
 
