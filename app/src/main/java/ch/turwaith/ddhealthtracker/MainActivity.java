@@ -16,7 +16,7 @@ public class MainActivity extends AppCompatActivity {
 
     Button startButton;
     EditText characterNameEditText;
-    EditText initialHpEditText;
+    EditText maxHpEditText;
 
     String characterName;
     String initialHP;
@@ -31,14 +31,14 @@ public class MainActivity extends AppCompatActivity {
 
         hideKeyboard(view);
 
-        if (initialHpEditText.getText().toString().isEmpty()){
+        if (maxHpEditText.getText().toString().isEmpty()){
             Snackbar hp_empty = Snackbar.make(view, "Please enter an initial HP", BaseTransientBottomBar.LENGTH_LONG);
             hp_empty.show();
             return;
         }
 
         characterName = characterNameEditText.getText().toString();
-        initialHP = initialHpEditText.getText().toString();
+        initialHP = maxHpEditText.getText().toString();
 
         Intent intent = new Intent(getApplicationContext(), TrackerActivity.class);
         intent.putExtra("characterName", characterName);
@@ -58,6 +58,6 @@ public class MainActivity extends AppCompatActivity {
 
         startButton = findViewById(R.id.button_start);
         characterNameEditText = findViewById(R.id.editTextPersonName);
-        initialHpEditText = findViewById(R.id.editTextInitialHp);
+        maxHpEditText = findViewById(R.id.editTextMaxHp);
     }
 }
