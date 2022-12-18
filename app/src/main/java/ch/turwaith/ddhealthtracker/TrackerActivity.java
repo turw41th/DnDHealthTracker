@@ -22,6 +22,8 @@ public class TrackerActivity extends AppCompatActivity {
     int normalHp;
     int tempHp;
 
+    int currentHp;
+
 
     public String getNormalHP() {
         return Integer.toString(normalHp);
@@ -126,8 +128,11 @@ public class TrackerActivity extends AppCompatActivity {
 
         hpTextView = findViewById(R.id.textView_hp_counter);
         int tempHP = Integer.parseInt(intent.getStringExtra("initialHP"));
-        normalHp = tempHP;
+        //normalHp = tempHP;
         initialHP = tempHP;
+
+        currentHp = Integer.parseInt(intent.getStringExtra("currentHP"));
+        normalHp = currentHp;
 
         maxHpTextView.setText("Max HP: " + initialHP);
 
